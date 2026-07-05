@@ -1,55 +1,88 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 680" width="840" height="680" style="background:#0b0f19; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640" style="background:#090d16;">
   <defs>
+    <!-- Custom Designer Fonts -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap');
+      text {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      }
+      .title {
+        font-weight: 800;
+        font-size: 26px;
+        fill: #ffffff;
+        letter-spacing: -0.02em;
+      }
+      .subtitle {
+        font-weight: 500;
+        font-size: 13px;
+        fill: #64748b;
+        letter-spacing: 0.05em;
+      }
+      .badge-text {
+        font-weight: 700;
+        font-size: 10px;
+        fill: #090d16;
+        letter-spacing: 0.05em;
+      }
+      .card-title {
+        font-weight: 700;
+        font-size: 12px;
+        fill: #f8fafc;
+      }
+      .card-subtitle {
+        font-weight: 500;
+        font-size: 10px;
+        fill: #94a3b8;
+      }
+      .card-status {
+        font-weight: 700;
+        font-size: 9px;
+      }
+    </style>
+
     <!-- Background Grid Pattern -->
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" opacity="0.3" />
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1.2" opacity="0.15" />
     </pattern>
 
-    <!-- Gradients -->
-    <linearGradient id="vpc-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#06b6d4" />
-      <stop offset="100%" stop-color="#3b82f6" />
-    </linearGradient>
-    <linearGradient id="eks-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Glowing Auroras -->
+    <radialGradient id="aurora-purple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#090d16" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="aurora-cyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#090d16" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Custom Gradients -->
+    <linearGradient id="eks-border-grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#a855f7" />
-      <stop offset="100%" stop-color="#ec4899" />
+      <stop offset="50%" stop-color="#d946ef" />
+      <stop offset="100%" stop-color="#6366f1" />
     </linearGradient>
     <linearGradient id="node-on-demand" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#10b981" />
       <stop offset="100%" stop-color="#059669" />
     </linearGradient>
     <linearGradient id="node-spot" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="0%" stop-color="#fbbf24" />
       <stop offset="100%" stop-color="#d97706" />
     </linearGradient>
 
-    <!-- Glow & Shadow Filters -->
-    <filter id="glow-orange" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
+    <!-- Soft Glass Drop Shadow -->
+    <filter id="glass-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.65" />
     </filter>
-    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-    <filter id="glow-purple" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur" />
+    <filter id="glow-orange" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
 
-    <!-- Markers for arrows -->
-    <marker id="arrow-slate" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#475569" />
-    </marker>
+    <!-- Flow Markers -->
     <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#3b82f6" />
     </marker>
@@ -58,202 +91,227 @@
     </marker>
   </defs>
 
-  <!-- Background -->
-  <rect width="100%" height="100%" fill="#0b0f19" />
+  <!-- Canvas Background & Grid -->
+  <rect width="100%" height="100%" fill="#090d16" />
+  <circle cx="480" cy="300" r="350" fill="url(#aurora-purple)" />
+  <circle cx="200" cy="450" r="250" fill="url(#aurora-cyan)" />
   <rect width="100%" height="100%" fill="url(#grid)" />
 
-  <!-- TITLE SECTION -->
-  <g transform="translate(40, 40)">
-    <text x="0" y="0" font-size="24" font-weight="800" fill="#f8fafc">AWS EKS Cluster Architecture</text>
-    <text x="0" y="24" font-size="14" fill="#94a3b8">Terraform-managed Kubernetes deployment on AWS</text>
+  <!-- CENTURED TITLE -->
+  <g transform="translate(480, 50)" text-anchor="middle">
+    <text x="0" y="0" class="title">EKS Cluster Topology</text>
+    <text x="0" y="24" class="subtitle">TERRAFORM MANAGED • DEV ENVIRONMENT</text>
   </g>
 
-  <!-- ==================== AWS INFRASTRUCTURE SECTION ==================== -->
-  <g transform="translate(40, 90)">
-    <!-- AWS Cloud Outer Box -->
-    <rect x="0" y="0" width="760" height="570" rx="16" fill="#0f172a" fill-opacity="0.6" stroke="#ff9900" stroke-width="2" filter="url(#glow-orange)" />
+  <!-- ==================== AWS INFRASTRUCTURE ==================== -->
+  <g transform="translate(50, 110)">
+    <!-- AWS Cloud Glassmorphic Outer Card -->
+    <rect x="0" y="0" width="860" height="490" rx="24" fill="#0f172a" fill-opacity="0.4" stroke="#ff9900" stroke-width="1.8" filter="url(#glass-shadow)" />
     
-    <!-- AWS Badge -->
-    <rect x="20" y="-12" width="130" height="24" rx="4" fill="#ff9900" />
-    <text x="85" y="4" font-size="11.5" font-weight="800" fill="#0b0f19" text-anchor="middle">AWS CLOUD</text>
-    <text x="20" y="30" font-size="15" font-weight="700" fill="#ff9900">us-east-1 Region</text>
+    <!-- AWS Cloud Badge -->
+    <g transform="translate(30, -12)">
+      <rect x="0" y="0" width="100" height="24" rx="12" fill="#ff9900" filter="url(#glow-orange)" />
+      <text x="50" y="15" class="badge-text" text-anchor="middle">AWS CLOUD</text>
+    </g>
+    <text x="145" y="16" font-size="11" font-weight="700" fill="#ff9900" opacity="0.8">us-east-1 Region</text>
 
-    <!-- Internet Gateway (IGW) Placement -->
-    <g transform="translate(350, 20)">
-      <rect x="0" y="0" width="60" height="32" rx="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" />
-      <text x="30" y="20" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">IGW</text>
+    <!-- Internet Gateway (IGW) Card -->
+    <g transform="translate(370, 20)">
+      <rect x="0" y="0" width="120" height="36" rx="10" fill="#0284c7" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1.5" />
+      <!-- IGW Icon -->
+      <circle cx="22" cy="18" r="6" fill="none" stroke="#38bdf8" stroke-width="1.5" />
+      <path d="M22 8 L22 12 M22 24 L22 28 M12 18 L16 18 M28 18 L32 18" stroke="#38bdf8" stroke-width="1.5" />
+      <text x="42" y="22" font-size="11" font-weight="800" fill="#ffffff">IGW</text>
+      <text x="42" y="31" font-size="8.5" fill="#bae6fd">internet-gateway</text>
     </g>
 
-    <!-- VPC Box -->
-    <g transform="translate(20, 70)">
-      <rect x="0" y="0" width="720" height="480" rx="14" fill="#121e36" fill-opacity="0.5" stroke="#06b6d4" stroke-width="2" filter="url(#glow-cyan)" />
-      <text x="20" y="25" font-size="14" font-weight="700" fill="#06b6d4">Virtual Private Cloud (VPC)</text>
-      <text x="195" y="25" font-size="11" fill="#67e8f9">CIDR: 10.16.0.0/16</text>
+    <!-- VPC Card -->
+    <g transform="translate(20, 75)">
+      <rect x="0" y="0" width="820" height="395" rx="18" fill="#121e36" fill-opacity="0.6" stroke="#06b6d4" stroke-width="1.5" />
+      
+      <!-- VPC Header -->
+      <text x="25" y="28" font-size="13" font-weight="800" fill="#22d3ee" letter-spacing="0.02em">Virtual Private Cloud (VPC)</text>
+      <text x="200" y="28" font-size="10.5" font-weight="600" fill="#67e8f9" opacity="0.8">10.16.0.0/16</text>
 
-      <!-- Active Cluster Info Banner -->
-      <g transform="translate(360, 10)">
-        <rect x="0" y="0" width="340" height="26" rx="6" fill="#1e1b4b" stroke="#a855f7" stroke-width="1.5" filter="url(#glow-purple)" />
-        <text x="170" y="17" font-size="10.5" font-weight="700" fill="#e9d5ff" text-anchor="middle">Add-ons: vpc-cni | coredns | kube-proxy | ebs-csi</text>
+      <!-- Active Cluster Info Badge -->
+      <g transform="translate(485, 12)">
+        <rect x="0" y="0" width="310" height="24" rx="12" fill="#1e1b4b" fill-opacity="0.9" stroke="url(#eks-border-grad)" stroke-width="1.2" />
+        <circle cx="15" cy="12" r="4" fill="#a855f7" />
+        <text x="28" y="16" font-size="9" font-weight="700" fill="#e9d5ff">ADDONS: vpc-cni | coredns | kube-proxy | ebs-csi</text>
       </g>
 
-      <!-- 3 Availability Zones (AZs) Columns -->
-      
-      <!-- ==================== AZ1: us-east-1a ==================== -->
-      <g transform="translate(15, 45)">
-        <!-- AZ Border -->
-        <rect x="0" y="0" width="220" height="420" rx="10" fill="#1e293b" fill-opacity="0.2" stroke="#475569" stroke-width="1" stroke-dasharray="4 4" />
-        <text x="110" y="20" font-size="12" font-weight="700" fill="#94a3b8" text-anchor="middle">Availability Zone: us-east-1a</text>
+      <!-- ==================== AVAILABILITY ZONE 1 ==================== -->
+      <g transform="translate(15, 50)">
+        <rect x="0" y="0" width="245" height="325" rx="12" fill="#1e293b" fill-opacity="0.25" stroke="#475569" stroke-width="1" stroke-dasharray="5 5" />
+        <text x="122" y="20" font-size="11" font-weight="700" fill="#94a3b8" text-anchor="middle">Zone: us-east-1a</text>
 
         <!-- Public Subnet 1 -->
-        <g transform="translate(10, 30)">
-          <rect x="0" y="0" width="200" height="120" rx="8" fill="#065f46" fill-opacity="0.1" stroke="#34d399" stroke-width="1.5" />
-          <text x="10" y="20" font-size="11" font-weight="700" fill="#34d399">Public Subnet 1</text>
-          <text x="10" y="34" font-size="10" fill="#a7f3d0">10.16.0.0/20</text>
+        <g transform="translate(10, 32)">
+          <rect x="0" y="0" width="225" height="92" rx="10" fill="#065f46" fill-opacity="0.08" stroke="#34d399" stroke-width="1.2" />
+          <text x="12" y="20" font-size="10" font-weight="700" fill="#34d399">Public Subnet 1</text>
+          <text x="12" y="32" font-size="8.5" fill="#a7f3d0">10.16.0.0/20</text>
           
           <!-- NAT Gateway -->
-          <g transform="translate(10, 48)">
-            <rect x="0" y="0" width="180" height="60" rx="6" fill="#047857" stroke="#10b981" stroke-width="1.5" />
-            <text x="90" y="26" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">NAT Gateway</text>
-            <text x="90" y="42" font-size="10" fill="#a7f3d0" text-anchor="middle">eip-ngw (elastic ip)</text>
+          <g transform="translate(10, 42)">
+            <rect x="0" y="0" width="205" height="42" rx="8" fill="#047857" fill-opacity="0.85" stroke="#10b981" stroke-width="1.2" />
+            <!-- Router gear look -->
+            <circle cx="22" cy="21" r="5" fill="none" stroke="#ffffff" stroke-width="1.5" />
+            <path d="M17 21 L27 21 M22 16 L22 26" stroke="#ffffff" stroke-width="1.2" />
+            <text x="38" y="20" font-size="11" font-weight="800" fill="#ffffff">NAT Gateway</text>
+            <text x="38" y="30" font-size="8.5" fill="#a7f3d0">eip-ngw (Elastic IP)</text>
           </g>
         </g>
 
         <!-- Private Subnet 1 -->
-        <g transform="translate(10, 165)">
-          <rect x="0" y="0" width="200" height="245" rx="8" fill="#1e3a8a" fill-opacity="0.1" stroke="#3b82f6" stroke-width="1.5" />
-          <text x="10" y="20" font-size="11" font-weight="700" fill="#38bdf8">Private Subnet 1</text>
-          <text x="10" y="34" font-size="10" fill="#93c5fd">10.16.128.0/20</text>
+        <g transform="translate(10, 134)">
+          <rect x="0" y="0" width="225" height="180" rx="10" fill="#1e3a8a" fill-opacity="0.08" stroke="#3b82f6" stroke-width="1.2" />
+          <text x="12" y="20" font-size="10" font-weight="700" fill="#38bdf8">Private Subnet 1</text>
+          <text x="12" y="32" font-size="8.5" fill="#93c5fd">10.16.128.0/20</text>
 
-          <!-- Nodes Container -->
-          <!-- On-Demand Worker Node -->
-          <g transform="translate(10, 80)">
-            <rect x="0" y="0" width="180" height="70" rx="6" fill="#0b1329" stroke="#10b981" stroke-width="1.5" />
-            <rect x="0" y="0" width="180" height="6" rx="3" fill="url(#node-on-demand)" />
-            <text x="10" y="24" font-size="11" font-weight="800" fill="#e2e8f0">Node: On-Demand</text>
-            <text x="10" y="42" font-size="10" fill="#94a3b8">Instance: t3a.medium</text>
-            <text x="10" y="56" font-size="9" fill="#10b981" font-weight="600">Status: Running (Desired: 1)</text>
+          <!-- On-Demand Node -->
+          <g transform="translate(10, 45)">
+            <rect x="0" y="0" width="205" height="56" rx="8" fill="#0d1527" stroke="#10b981" stroke-width="1.2" />
+            <!-- Status glow dot -->
+            <circle cx="188" cy="15" r="3.5" fill="#10b981" />
+            <!-- Chip/CPU Icon -->
+            <rect x="12" y="18" width="16" height="16" rx="3" fill="none" stroke="#34d399" stroke-width="1.5" />
+            <path d="M12 23 L9 23 M12 29 L9 29 M16 18 L16 15 M24 18 L24 15 M28 23 L31 23 M28 29 L31 29 M16 34 L16 37 M24 34 L24 37" stroke="#34d399" stroke-width="1.2" />
+            
+            <text x="36" y="24" class="card-title">Node: On-Demand</text>
+            <text x="36" y="36" class="card-subtitle">t3a.medium (Desired: 1)</text>
+            <text x="36" y="47" class="card-status" fill="#10b981">Active &amp; Ready</text>
           </g>
 
-          <!-- Spot Worker Node -->
-          <g transform="translate(10, 160)">
-            <rect x="0" y="0" width="180" height="70" rx="6" fill="#0b1329" stroke="#f59e0b" stroke-width="1.5" />
-            <rect x="0" y="0" width="180" height="6" rx="3" fill="url(#node-spot)" />
-            <text x="10" y="24" font-size="11" font-weight="800" fill="#e2e8f0">Node: Spot Instance</text>
-            <text x="10" y="42" font-size="10" fill="#94a3b8">Instance: c5a / m5a / t3a</text>
-            <text x="10" y="56" font-size="9" fill="#f59e0b" font-weight="600">Status: Dynamic Spot Pool</text>
+          <!-- Spot Node -->
+          <g transform="translate(10, 112)">
+            <rect x="0" y="0" width="205" height="56" rx="8" fill="#0d1527" stroke="#fbbf24" stroke-width="1.2" />
+            <!-- Lightning Bolt Icon -->
+            <path d="M18 15 L26 15 L21 26 L27 26 L17 38 L21 26 L15 26 Z" fill="#fbbf24" />
+            
+            <text x="36" y="24" class="card-title">Node: Spot Instance</text>
+            <text x="36" y="36" class="card-subtitle">c5a / m5a / t3a (Min: 1, Max: 10)</text>
+            <text x="36" y="47" class="card-status" fill="#fbbf24">Scale Pool Active</text>
           </g>
         </g>
       </g>
 
-      <!-- ==================== AZ2: us-east-1b ==================== -->
-      <g transform="translate(250, 45)">
-        <!-- AZ Border -->
-        <rect x="0" y="0" width="220" height="420" rx="10" fill="#1e293b" fill-opacity="0.2" stroke="#475569" stroke-width="1" stroke-dasharray="4 4" />
-        <text x="110" y="20" font-size="12" font-weight="700" fill="#94a3b8" text-anchor="middle">Availability Zone: us-east-1b</text>
+      <!-- ==================== AVAILABILITY ZONE 2 ==================== -->
+      <g transform="translate(285, 50)">
+        <rect x="0" y="0" width="245" height="325" rx="12" fill="#1e293b" fill-opacity="0.25" stroke="#475569" stroke-width="1" stroke-dasharray="5 5" />
+        <text x="122" y="20" font-size="11" font-weight="700" fill="#94a3b8" text-anchor="middle">Zone: us-east-1b</text>
 
         <!-- Public Subnet 2 -->
-        <g transform="translate(10, 30)">
-          <rect x="0" y="0" width="200" height="120" rx="8" fill="#065f46" fill-opacity="0.04" stroke="#34d399" stroke-width="1.5" stroke-dasharray="2 2" />
-          <text x="10" y="20" font-size="11" font-weight="700" fill="#34d399">Public Subnet 2</text>
-          <text x="10" y="34" font-size="10" fill="#a7f3d0">10.16.16.0/20</text>
-          <text x="100" y="75" font-size="11" fill="#64748b" text-anchor="middle" font-style="italic">Available for Public ELB</text>
+        <g transform="translate(10, 32)">
+          <rect x="0" y="0" width="225" height="92" rx="10" fill="#065f46" fill-opacity="0.02" stroke="#34d399" stroke-width="1" stroke-dasharray="3 3" />
+          <text x="12" y="20" font-size="10" font-weight="700" fill="#34d399">Public Subnet 2</text>
+          <text x="12" y="32" font-size="8.5" fill="#a7f3d0">10.16.16.0/20</text>
+          <text x="112" y="60" font-size="10" fill="#64748b" text-anchor="middle" font-style="italic">Available for Public ELB</text>
         </g>
 
         <!-- Private Subnet 2 -->
-        <g transform="translate(10, 165)">
-          <rect x="0" y="0" width="200" height="245" rx="8" fill="#1e3a8a" fill-opacity="0.1" stroke="#3b82f6" stroke-width="1.5" />
-          <text x="10" y="20" font-size="11" font-weight="700" fill="#38bdf8">Private Subnet 2</text>
-          <text x="10" y="34" font-size="10" fill="#93c5fd">10.16.144.0/20</text>
+        <g transform="translate(10, 134)">
+          <rect x="0" y="0" width="225" height="180" rx="10" fill="#1e3a8a" fill-opacity="0.08" stroke="#3b82f6" stroke-width="1.2" />
+          <text x="12" y="20" font-size="10" font-weight="700" fill="#38bdf8">Private Subnet 2</text>
+          <text x="12" y="32" font-size="8.5" fill="#93c5fd">10.16.144.0/20</text>
 
-          <!-- Nodes Container -->
-          <!-- On-Demand Worker Node -->
-          <g transform="translate(10, 80)">
-            <rect x="0" y="0" width="180" height="70" rx="6" fill="#0b1329" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.4" />
-            <rect x="0" y="0" width="180" height="6" rx="3" fill="url(#node-on-demand)" opacity="0.4" />
-            <text x="10" y="24" font-size="11" font-weight="800" fill="#94a3b8">Node: On-Demand</text>
-            <text x="10" y="42" font-size="10" fill="#64748b">Instance: t3a.medium</text>
-            <text x="10" y="56" font-size="9" fill="#64748b">Status: Scale-Up Target</text>
+          <!-- On-Demand Node (Target for scaling) -->
+          <g transform="translate(10, 45)">
+            <rect x="0" y="0" width="205" height="56" rx="8" fill="#0d1527" fill-opacity="0.4" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.2" />
+            <!-- Chip/CPU Icon -->
+            <rect x="12" y="18" width="16" height="16" rx="3" fill="none" stroke="#34d399" stroke-opacity="0.4" stroke-width="1.5" />
+            <path d="M12 23 L9 23 M12 29 L9 29 M16 18 L16 15 M24 18 L24 15" stroke="#34d399" stroke-opacity="0.4" stroke-width="1.2" />
+            
+            <text x="36" y="24" class="card-title" fill="#64748b">Node: On-Demand</text>
+            <text x="36" y="36" class="card-subtitle" fill="#475569">t3a.medium</text>
+            <text x="36" y="47" class="card-status" fill="#64748b">Scale-Up Target</text>
           </g>
 
-          <!-- Spot Worker Node -->
-          <g transform="translate(10, 160)">
-            <rect x="0" y="0" width="180" height="70" rx="6" fill="#0b1329" stroke="#f59e0b" stroke-width="1.5" />
-            <rect x="0" y="0" width="180" height="6" rx="3" fill="url(#node-spot)" />
-            <text x="10" y="24" font-size="11" font-weight="800" fill="#e2e8f0">Node: Spot Instance</text>
-            <text x="10" y="42" font-size="10" fill="#94a3b8">Instance: c5a / m5a / t3a</text>
-            <text x="10" y="56" font-size="9" fill="#f59e0b" font-weight="600">Status: Dynamic Spot Pool</text>
+          <!-- Spot Node -->
+          <g transform="translate(10, 112)">
+            <rect x="0" y="0" width="205" height="56" rx="8" fill="#0d1527" stroke="#fbbf24" stroke-width="1.2" />
+            <!-- Lightning Bolt Icon -->
+            <path d="M18 15 L26 15 L21 26 L27 26 L17 38 L21 26 L15 26 Z" fill="#fbbf24" />
+            
+            <text x="36" y="24" class="card-title">Node: Spot Instance</text>
+            <text x="36" y="36" class="card-subtitle">c5a / m5a / t3a (Min: 1, Max: 10)</text>
+            <text x="36" y="47" class="card-status" fill="#fbbf24">Scale Pool Active</text>
           </g>
         </g>
       </g>
 
-      <!-- ==================== AZ3: us-east-1c ==================== -->
-      <g transform="translate(485, 45)">
-        <!-- AZ Border -->
-        <rect x="0" y="0" width="220" height="420" rx="10" fill="#1e293b" fill-opacity="0.2" stroke="#475569" stroke-width="1" stroke-dasharray="4 4" />
-        <text x="110" y="20" font-size="12" font-weight="700" fill="#94a3b8" text-anchor="middle">Availability Zone: us-east-1c</text>
+      <!-- ==================== AVAILABILITY ZONE 3 ==================== -->
+      <g transform="translate(555, 50)">
+        <rect x="0" y="0" width="245" height="325" rx="12" fill="#1e293b" fill-opacity="0.25" stroke="#475569" stroke-width="1" stroke-dasharray="5 5" />
+        <text x="122" y="20" font-size="11" font-weight="700" fill="#94a3b8" text-anchor="middle">Zone: us-east-1c</text>
 
         <!-- Public Subnet 3 -->
-        <g transform="translate(10, 30)">
-          <rect x="0" y="0" width="200" height="120" rx="8" fill="#065f46" fill-opacity="0.04" stroke="#34d399" stroke-width="1.5" stroke-dasharray="2 2" />
-          <text x="10" y="20" font-size="11" font-weight="700" fill="#34d399">Public Subnet 3</text>
-          <text x="10" y="34" font-size="10" fill="#a7f3d0">10.16.32.0/20</text>
-          <text x="100" y="75" font-size="11" fill="#64748b" text-anchor="middle" font-style="italic">Available for Public ELB</text>
+        <g transform="translate(10, 32)">
+          <rect x="0" y="0" width="225" height="92" rx="10" fill="#065f46" fill-opacity="0.02" stroke="#34d399" stroke-width="1" stroke-dasharray="3 3" />
+          <text x="12" y="20" font-size="10" font-weight="700" fill="#34d399">Public Subnet 3</text>
+          <text x="12" y="32" font-size="8.5" fill="#a7f3d0">10.16.32.0/20</text>
+          <text x="112" y="60" font-size="10" fill="#64748b" text-anchor="middle" font-style="italic">Available for Public ELB</text>
         </g>
 
         <!-- Private Subnet 3 -->
-        <g transform="translate(10, 165)">
-          <rect x="0" y="0" width="200" height="245" rx="8" fill="#1e3a8a" fill-opacity="0.1" stroke="#3b82f6" stroke-width="1.5" />
-          <text x="10" y="20" font-size="11" font-weight="700" fill="#38bdf8">Private Subnet 3</text>
-          <text x="10" y="34" font-size="10" fill="#93c5fd">10.16.160.0/20</text>
+        <g transform="translate(10, 134)">
+          <rect x="0" y="0" width="225" height="180" rx="10" fill="#1e3a8a" fill-opacity="0.08" stroke="#3b82f6" stroke-width="1.2" />
+          <text x="12" y="20" font-size="10" font-weight="700" fill="#38bdf8">Private Subnet 3</text>
+          <text x="12" y="32" font-size="8.5" fill="#93c5fd">10.16.160.0/20</text>
 
-          <!-- Nodes Container -->
-          <!-- On-Demand Worker Node -->
-          <g transform="translate(10, 80)">
-            <rect x="0" y="0" width="180" height="70" rx="6" fill="#0b1329" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.4" />
-            <rect x="0" y="0" width="180" height="6" rx="3" fill="url(#node-on-demand)" opacity="0.4" />
-            <text x="10" y="24" font-size="11" font-weight="800" fill="#94a3b8">Node: On-Demand</text>
-            <text x="10" y="42" font-size="10" fill="#64748b">Instance: t3a.medium</text>
-            <text x="10" y="56" font-size="9" fill="#64748b">Status: Scale-Up Target</text>
+          <!-- On-Demand Node (Target for scaling) -->
+          <g transform="translate(10, 45)">
+            <rect x="0" y="0" width="205" height="56" rx="8" fill="#0d1527" fill-opacity="0.4" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.2" />
+            <!-- Chip/CPU Icon -->
+            <rect x="12" y="18" width="16" height="16" rx="3" fill="none" stroke="#34d399" stroke-opacity="0.4" stroke-width="1.5" />
+            <path d="M12 23 L9 23 M12 29 L9 29 M16 18 L16 15" stroke="#34d399" stroke-opacity="0.4" stroke-width="1.2" />
+            
+            <text x="36" y="24" class="card-title" fill="#64748b">Node: On-Demand</text>
+            <text x="36" y="36" class="card-subtitle" fill="#475569">t3a.medium</text>
+            <text x="36" y="47" class="card-status" fill="#64748b">Scale-Up Target</text>
           </g>
 
-          <!-- Spot Worker Node -->
-          <g transform="translate(10, 160)">
-            <rect x="0" y="0" width="180" height="70" rx="6" fill="#0b1329" stroke="#f59e0b" stroke-width="1.5" />
-            <rect x="0" y="0" width="180" height="6" rx="3" fill="url(#node-spot)" />
-            <text x="10" y="24" font-size="11" font-weight="800" fill="#e2e8f0">Node: Spot Instance</text>
-            <text x="10" y="42" font-size="10" fill="#94a3b8">Instance: c5a / m5a / t3a</text>
-            <text x="10" y="56" font-size="9" fill="#f59e0b" font-weight="600">Status: Dynamic Spot Pool</text>
+          <!-- Spot Node -->
+          <g transform="translate(10, 112)">
+            <rect x="0" y="0" width="205" height="56" rx="8" fill="#0d1527" stroke="#fbbf24" stroke-width="1.2" />
+            <!-- Lightning Bolt Icon -->
+            <path d="M18 15 L26 15 L21 26 L27 26 L17 38 L21 26 L15 26 Z" fill="#fbbf24" />
+            
+            <text x="36" y="24" class="card-title">Node: Spot Instance</text>
+            <text x="36" y="36" class="card-subtitle">c5a / m5a / t3a (Min: 1, Max: 10)</text>
+            <text x="36" y="47" class="card-status" fill="#fbbf24">Scale Pool Active</text>
           </g>
         </g>
       </g>
 
       <!-- ==================== EKS CLUSTER CONTROL PLANE OVERLAY ==================== -->
-      <g transform="translate(95, 185)">
-        <rect x="0" y="0" width="530" height="42" rx="21" fill="#1e113a" fill-opacity="0.8" stroke="#a855f7" stroke-width="2.5" filter="url(#glow-purple)" />
+      <g transform="translate(130, 160)">
+        <rect x="0" y="0" width="560" height="38" rx="19" fill="#15102a" stroke="url(#eks-border-grad)" stroke-width="2" filter="url(#glass-shadow)" />
         
-        <!-- EKS Logo shape -->
-        <polygon points="25,12 34,17 34,27 25,32 16,27 16,17" fill="none" stroke="#d946ef" stroke-width="2" />
-        <circle cx="25" cy="22" r="3" fill="#d946ef" />
+        <!-- EKS Logo Shape (3D Hexagon) -->
+        <polygon points="25,10 33,14 33,24 25,28 17,24 17,14" fill="#a855f7" />
+        <polygon points="25,10 25,28 17,24 17,14" fill="#d946ef" opacity="0.7" />
+        <circle cx="25" cy="19" r="2.5" fill="#ffffff" />
 
-        <text x="50" y="26" font-size="13" font-weight="800" fill="#ffffff">Amazon EKS Cluster Control Plane</text>
-        <text x="270" y="26" font-size="11" fill="#c084fc">dev-ap-medium-eks-cluster</text>
-        <text x="475" y="26" font-size="12" font-weight="800" fill="#e9d5ff">Kubernetes 1.33</text>
+        <text x="45" y="24" font-size="12" font-weight="800" fill="#ffffff">Amazon EKS Control Plane</text>
+        <text x="212" y="24" font-size="10.5" font-weight="600" fill="#c084fc">dev-ap-medium-eks-cluster</text>
+        <rect x="475" y="9" width="70" height="20" rx="10" fill="#6366f1" fill-opacity="0.3" stroke="#818cf8" stroke-width="1" />
+        <text x="510" y="22" font-size="9.5" font-weight="800" fill="#e0e7ff" text-anchor="middle">v1.33</text>
       </g>
     </g>
 
-    <!-- Outgoing route arrow from Public NAT GW to IGW -->
-    <path d="M125 148 L125 130 L380 130 L380 52" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arrow-green)" />
+    <!-- Smooth Bezier connection: NAT GW to IGW -->
+    <path d="M137 147 C137 80 430 80 430 56" fill="none" stroke="#10b981" stroke-width="1.8" stroke-dasharray="3 3" marker-end="url(#arrow-green)" />
     
-    <!-- Private Route arrow to NAT GW -->
-    <!-- Private subnet 2 and 3 traffic mapping to NAT GW -->
-    <path d="M420 365 L420 180 L140 180 M655 365 L655 180" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arrow-blue)" />
+    <!-- Smooth Bezier connections: Private Subnet Route Tables to NAT Gateway -->
+    <path d="M422 360 C422 280 232 300 232 232 M692 360 C692 260 232 340 232 232" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-dasharray="3 3" marker-end="url(#arrow-blue)" />
   </g>
 
-  <!-- Outside Internet Icon & connection -->
-  <g transform="translate(395, 20)">
-    <path d="M18 10 A10 10 0 0 1 35 15 A12 12 0 0 1 45 30 L5 30 A8 8 0 0 1 18 10 Z" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
-    <text x="25" y="24" font-size="9" fill="#94a3b8" font-weight="bold" text-anchor="middle">Internet</text>
+  <!-- Stylized Cloud for External Internet -->
+  <g transform="translate(435, 15)">
+    <!-- Custom Cloud Path -->
+    <path d="M25 45 A 15 15 0 0 1 35 30 A 20 20 0 0 1 65 25 A 18 18 0 0 1 90 37 A 15 15 0 0 1 100 45 C 108 45 115 52 115 60 C 115 68 108 75 100 75 L 25 75 C 17 75 10 68 10 60 C 10 52 17 45 25 45 Z" fill="#1e293b" fill-opacity="0.6" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="62" y="58" font-size="10" fill="#bae6fd" font-weight="800" text-anchor="middle">Internet</text>
     <!-- Arrow connecting Internet to IGW -->
-    <path d="M25 30 L25 62" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blue)" />
+    <path d="M62.5 75 C62.5 90 45 90 45 106" fill="none" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#arrow-blue)" />
   </g>
 </svg>
