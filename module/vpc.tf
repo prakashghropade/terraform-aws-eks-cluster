@@ -4,7 +4,7 @@ locals {
 
 resource "aws_vpc" "vpc" {
 
-    cider_block = var.cidr-block
+    cidr_block = var.cidr-block
     instance_tenancy = "default"
     enable_dns_support = true
     enable_dns_hostnames = true
@@ -80,7 +80,7 @@ resource "aws_route_table" "public-rt" {
 }
 
 resource "aws_route_table_association" "public-rt-assoc" {
-    count = 3
+    count = var.pub-subnet-count
     route_table_id = aws_route_table.public-rt.id
     subnet_id = element(aws_subnet.public.*.id, count.index)
 
@@ -127,7 +127,7 @@ resource "aws_route_table" "private-rt" {
 
 
 resource "aws_route_table_association" "private-rt-assoc" {
-    count = 3
+    count = var.pri-subnet-count
     route_table_id = aws_route_table.private-rt.id
     subnet_id = aws_subnet.private[count.index].id
 
