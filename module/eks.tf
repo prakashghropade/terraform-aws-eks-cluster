@@ -37,7 +37,7 @@ resource "aws_iam_openid_connect_provider" "eks-oidc" {
     url = aws_eks_cluster.eks[count.index].identity[0].oidc[0].issuer
 }
 
-resource "aws_eks_addons" "eks-addons" {
+resource "aws_eks_addon" "eks-addons" {
     for_each = { for idx, addon in var.addons : idx => addon }
     cluster_name = aws_eks_cluster.eks[0].name
     addon_name = each.value.name
