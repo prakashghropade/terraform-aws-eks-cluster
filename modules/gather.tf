@@ -1,0 +1,20 @@
+data "tls_certificate" "example" {
+  url = aws_eks_cluster[0].identiy[0].oidc[0].issuer
+}
+
+data "aws_iam_policy_document" "eks_oidc_assume_role_policy" {
+  statement {
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+    effect  = "Allow"
+
+    condition {
+      test     = "StringEquals"
+      variable = "${replace(aws_iam_openid_connect_provider.eks_oidc[0].url, "https://", "")}:sub"
+      values   = ["system:serviceaccount:default:aws-test"]
+    }
+
+    principals {
+      type        = "Federated"
+      identifiers = [aws_iam_openid_connect_provider.eks_oidc[0].arn]
+    }
+  }
