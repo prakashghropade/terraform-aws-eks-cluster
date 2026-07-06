@@ -5,7 +5,7 @@ This repository provisions an Amazon EKS cluster with networking, IAM roles, add
 
 ## Workflow
 
-![EKS deployment workflow](docs/eks-workflow.svg)
+![EKS deployment workflow](docs/EKS_Cluster_Terraform_Project.png)
 
 ## Prerequisites
 
